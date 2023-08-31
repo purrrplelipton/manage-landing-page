@@ -1,24 +1,3 @@
-@font-face {
-  font-family: 'Trap';
-  src: url(./assets/trap/Trap-Regular.otf);
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Trap';
-  src: url(./assets/trap/Trap-Medium.otf);
-  font-weight: 500;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Trap';
-  src: url(./assets/trap/Trap-Bold.otf);
-  font-weight: 700;
-  font-display: swap;
-}
-
 :root {
   --bright-red: hsl(12, 88%, 59%);
   --dark-blue: hsl(228, 39%, 23%);
@@ -28,16 +7,10 @@
   --very-light-gray: hsl(0, 0%, 98%);
 
   color: var(--dark-grayish-blue);
-  background-color: #fff;
-  background-image: url(./assets/images/bg-tablet-pattern.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-attachment: fixed;
-  background-position: 112.5% -12.5%;
+  background: #fff url(./assets/images/bg-tablet-pattern.svg) no-repeat right
+    top;
 
-  font-family: 'Trap', sans-serif;
-  font-weight: 400;
-  line-height: 1.5;
+  font-family: 'Be Vietnam Pro', sans-serif;
 
   scroll-behavior: smooth;
 }
@@ -45,7 +18,7 @@
 *,
 *::before,
 *::after {
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
 }
 
 body {
@@ -149,6 +122,7 @@ body:has(:checked)::before {
 main {
   padding: 0 1.25em;
   text-align: center;
+  overflow-x: hidden;
 }
 
 img[alt='intro illustration'] {
@@ -167,6 +141,10 @@ h1 {
   font-size: 2.25em;
 }
 
+h1 + p {
+  margin: 0.25em 0;
+}
+
 .get-started__link {
   text-decoration: none;
   font-size: 0.8em;
@@ -175,29 +153,34 @@ h1 {
   display: inline-block;
   background-color: var(--bright-red);
   padding: 1em 2.625em 0.875em 2.625em;
+  margin-top: 2.625em;
   border-radius: 2.625em;
 }
 
-section {
+main section {
   padding: 1.25em 0;
 }
 
-section:nth-child(2) h2 {
+main section:nth-child(2) h2 {
   font-size: 1.875em;
 }
 
-section:nth-child(2) ul {
+main section:nth-child(2) h2 + p {
+  margin: 1.125em 0;
+}
+
+main section:nth-child(2) ul {
   list-style-type: none;
-  padding: 0;
+  margin: 3em 0;
   text-align: initial;
 }
 
-section:nth-child(2) ul li:not(:last-child) {
+main section:nth-child(2) ul li:not(:last-child) {
   margin-bottom: 3em;
 }
 
-section:nth-child(2) ul li h3 {
-  width: calc(100% - calc(1.25em * 3.25));
+main section:nth-child(2) ul li h3 {
+  width: calc(100% + 1.25em);
   padding: 0.7em 0 0.4em;
   position: relative;
   overflow: hidden;
@@ -207,69 +190,140 @@ section:nth-child(2) ul li h3 {
   padding-left: 5.375em;
 }
 
-section:nth-child(2) ul li h3::before {
+main section:nth-child(2) ul li h3::before {
   content: '01';
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  height: auto;
   color: #fff;
   background-color: var(--bright-red);
-  padding-inline: 1.625em;
-  padding-top: 0.375em;
-  border-radius: 1.3em;
-  display: flex;
-  align-items: center;
+  padding: 0.45em 1.625em 0.375em;
+  border-radius: 1.625em;
+  display: grid;
+  place-items: center;
 }
 
-section:nth-child(2) ul li:not(:first-child, :last-child) h3::before {
+main section:nth-child(2) ul li:not(:first-child, :last-child) h3::before {
   content: '02';
 }
 
-section:nth-child(2) ul li:last-child h3::before {
+main section:nth-child(2) ul li:last-child h3::before {
   content: '03';
 }
 
-section:nth-child(2) ul li p {
+main section:nth-child(2) ul li p {
   font-size: 0.8625em;
+  margin: 1em 0;
 }
 
-section:nth-child(3) h2 {
-  font-size: 1.75em;
+main section:nth-child(3) h2 {
+  font-size: 1.8em;
+  margin-bottom: 3em;
 }
 
-section:nth-child(3) ul {
+main section:nth-child(3) ul {
   list-style-type: none;
-  padding: 0;
+  display: flex;
+  gap: 1.25em;
+  padding-top: 2.5em;
+  width: 100%;
+  transition: transform 0.3s cubic-bezier(0.36, 0.45, 0.63, 1.4);
+  /* overflow: hidden; */
 }
 
-section:nth-child(4) {
+main section:nth-child(3) ul li:not(:nth-child(2)) {
+  /* display: none; */
+  /* visibility: hidden; */
+}
+
+main section:nth-child(3) ul li {
+  display: inline-block;
+  min-width: 100%;
+  /* white-space: nowrap; */
+  background-color: var(--very-light-gray);
+  padding: 3.75em 1.5em 3em;
+  position: relative;
+  isolation: isolate;
+}
+
+main section:nth-child(3) ul li img {
+  margin-inline: auto;
+  inset: 0;
+  max-width: 76px;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+main section:nth-child(3) ul li h3 {
+  margin-bottom: 1em;
+}
+
+main section:nth-child(3) ul li p {
+  font-size: 0.875em;
+}
+
+main section:nth-child(3) > div {
+  margin: 2em 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+}
+
+main section:nth-child(3) > div button {
+  border: 0;
+  border-radius: 50%;
+
+  width: 0.625em;
+  aspect-ratio: 1 / 1;
+  background-color: var(--bright-red);
+  position: relative;
+  isolation: isolate;
+}
+
+main section:nth-child(3) > div button::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: inherit;
+  background-color: var(--data-clr);
+}
+
+main section:nth-child(3) .get-started__link {
+  margin-top: 1em;
+}
+
+main section:nth-child(4) {
+  padding: 4em 0;
   background-color: var(--bright-red);
   box-shadow: 0 0 0 100vmax var(--bright-red);
   clip-path: inset(0 -100vmax);
 }
 
-section:nth-child(4) h2 {
+main section:nth-child(4) h2 {
   color: #fff;
   font-size: 2.375em;
 }
 
-section:nth-child(4) .get-started__link {
+main section:nth-child(4) .get-started__link {
   color: var(--bright-red);
   background-color: #fff;
 }
 
 footer {
-  padding: 1.25em;
+  font-size: 0.9375em;
+  padding: 3.33333em 1.33333em 2.66666em;
   color: #fff;
   background-color: var(--very-dark-blue);
   text-align: center;
+  line-height: 1;
 }
 
 footer form {
   display: flex;
   align-items: center;
+  font-size: 0.93333em;
 }
 
 footer form input[type='text'] {
@@ -280,33 +334,36 @@ footer form input[type='text'] {
 }
 
 footer form button[type='submit'] {
+  text-transform: uppercase;
   color: #fff;
   background-color: var(--bright-red);
   border: 0;
-  border-radius: 1.5em;
-  padding: 1em 1.5em 0.8em;
-  margin-left: 1em;
+  border-radius: 1.8em;
+  padding: 1em 1.8em;
+  margin-left: 0.625em;
   display: flex;
   align-items: center;
 }
 
 footer ul {
   list-style-type: none;
-  padding: 0;
-  margin-inline: auto;
+  width: 75%;
+  margin: 3em auto;
+  text-align: left;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1em;
+  gap: 1.25em 3em;
 }
 
 footer div {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 2em;
 }
 
 footer div img {
-  min-width: 32px;
+  width: 36px;
 }
 
 footer a {
@@ -316,8 +373,7 @@ footer a {
 }
 
 footer a img {
-  display: block;
-  max-width: 100%;
+  margin: 3em 0;
 }
 
 footer p {
