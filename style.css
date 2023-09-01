@@ -68,18 +68,18 @@ body:has(:checked) {
   display: initial;
 }
 
-.header__right input[type='checkbox'] {
+.nav_wrapper input[type='checkbox'] {
   position: absolute;
   inset: 0;
   z-index: -1;
   opacity: 0;
 }
 
-.header__right input[type='checkbox']:not(:checked) ~ [alt='nav close icon'] {
+.nav_wrapper input[type='checkbox']:not(:checked) ~ [alt='nav close icon'] {
   display: none;
 }
 
-.header__right input[type='checkbox']:checked ~ [alt='nav open icon'] {
+.nav_wrapper input[type='checkbox']:checked ~ [alt='nav open icon'] {
   display: none;
 }
 
@@ -111,6 +111,11 @@ body:has(:checked)::before {
 
 .nav-list li {
   margin: 1em 0;
+}
+
+.main-header.get-started__link {
+  display: none;
+  visibility: hidden;
 }
 
 .nav-list li a[href] {
@@ -379,4 +384,112 @@ footer a img {
 footer p {
   font-size: 0.8em;
   color: var(--dark-grayish-blue);
+}
+
+@media only screen and (min-width: 1024px) {
+  [for='menu-toggle'] {
+    display: none;
+    visibility: none;
+  }
+
+  .nav-list {
+    display: flex !important;
+    gap: 2em;
+    position: initial;
+    background-color: initial;
+    margin: 0;
+    padding: 0;
+  }
+
+  .main-header .get-started__link {
+    display: initial;
+    visibility: visible;
+    margin: 0;
+  }
+
+  main section,
+  footer {
+    display: flex;
+  }
+
+  main section:first-child {
+    text-align: initial;
+    flex-flow: row-reverse nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  main section:first-child div {
+    max-width: 45%;
+  }
+
+  main section:first-child div h1 {
+    font-size: 3.5em;
+  }
+
+  main section:first-child div p {
+    max-width: 62.5%;
+  }
+
+  main section:nth-child(2) {
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: initial;
+  }
+
+  main section:nth-child(2) div {
+    max-width: 38%;
+  }
+
+  main section:nth-child(2) div p {
+    max-width: 70%;
+  }
+
+  main section:nth-child(2) ul {
+    margin: 0;
+    max-width: 37.625%;
+  }
+
+  main section:nth-child(2) ul li h3 {
+    background-color: initial;
+  }
+
+  main section:nth-child(2) ul li p {
+    padding-left: 5.8em;
+  }
+
+  main section:nth-child(3) {
+    display: initial;
+  }
+
+  main section:nth-child(3) ul {
+    overflow-x: auto;
+  }
+
+  main section:nth-child(3) ul li {
+    min-width: 36.6%;
+  }
+
+  main section:nth-child(3) div {
+    display: none;
+    visibility: none;
+  }
+
+  main section:nth-child(3) .get-started__link {
+    margin: 4em 0 12em;
+  }
+
+  main section:last-child {
+    align-items: center;
+    text-align: initial;
+    justify-content: space-between;
+  }
+
+  main section:last-child h2 {
+    max-width: 40%;
+  }
+
+  main section:last-child .get-started__link {
+    margin: 0;
+  }
 }
